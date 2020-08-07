@@ -43,7 +43,14 @@ public class ArticleController {
 	@ResponseBody
 	public String doAdd(@RequestParam Map<String, Object> param) {
 		long newId = articleService.add(param);
-
-		return newId +"번 게시물이 추가되었습니다.";
+		String msg = newId +"번 게시물이 추가되었습니다.";
+		
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("<script>");
+		sb.append("alert('" + msg + "');");
+		sb.append("</script>");
+		
+		return sb.toString();
 	}
 }
