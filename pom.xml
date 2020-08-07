@@ -53,7 +53,18 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-
+		
+		<!-- DB(mysql) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+		
 		<!-- getter, setter, 생성자 등을 자동으로 생성해주는 -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
