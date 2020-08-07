@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.sbs.starter.dao.ArticleDao;
 import com.sbs.starter.dto.Article;
+import com.sbs.starter.util.Cutil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,9 +30,7 @@ public class ArticleServiceImpl implements ArticleService {
 	public long add(Map<String, Object> param) {
 		articleDao.add(param);
 		
-		BigInteger bigIntId= (BigInteger)param.get("id");
-		long newId = bigIntId.longValue();
-		
-		return newId;
+
+		return Cutil.getAsLong(param.get("id"));
 	}
 }
