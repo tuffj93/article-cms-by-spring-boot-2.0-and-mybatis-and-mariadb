@@ -33,4 +33,11 @@ public class ArticleServiceImpl implements ArticleService {
 
 		return Cutil.getAsLong(param.get("id"));
 	}
+	@Override
+	public int getTotalCount() {
+		
+		return articleDao.getTotalCount();
+	}
+	
+	
 }
