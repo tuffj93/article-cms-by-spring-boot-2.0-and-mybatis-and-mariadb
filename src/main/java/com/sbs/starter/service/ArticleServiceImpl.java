@@ -30,7 +30,7 @@ public class ArticleServiceImpl implements ArticleService {
 	public long add(Map<String, Object> param) {
 		articleDao.add(param);
 
-		return CUtil.getAsLong(param.get("id"));
+		return Cutil.getAsLong(param.get("id"));
 	}
 
 	@Override
@@ -46,5 +46,11 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	public void delete(long id) {
 		articleDao.delete(id);
+	}
+
+	@Override
+	public void modify(Map<String, Object> param) {
+		System.out.println("test3");
+		articleDao.modify(param);
 	}
 }

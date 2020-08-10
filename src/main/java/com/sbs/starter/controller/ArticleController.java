@@ -1,5 +1,4 @@
 package com.sbs.starter.controller;
-
 import java.util.List;
 import java.util.Map;
 
@@ -20,22 +19,22 @@ import lombok.extern.slf4j.Slf4j;
 public class ArticleController {
 	@Autowired
 	ArticleService articleService;
-	
+
 	@RequestMapping("/article/detail")
 	public String showDetail(Model model, long id) {
 		Article article = articleService.getOne(id);
-		
+
 		model.addAttribute("article", article);
-		
+
 		return "article/detail";
 	}
 	
 	@RequestMapping("/article/modify")
 	public String showModify(Model model, long id) {
 		Article article = articleService.getOne(id);
-		
+
 		model.addAttribute("article", article);
-		
+
 		return "article/modify";
 	}
 
@@ -53,6 +52,24 @@ public class ArticleController {
 	@RequestMapping("/article/add")
 	public String showAdd() {
 		return "article/add";
+	}
+	
+	@RequestMapping("/article/doModify")
+	@ResponseBody
+	public String doModify(@RequestParam Map<String, Object> param, long id) {
+		articleService.modify(param);
+
+		String msg = id + "번 게시물이 수정되었습니다.";
+
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("alert('" + msg + "');");
+		sb.append("location.replace('./detail?id=" + id + "');");
+
+		sb.insert(0, "<script>");
+		sb.append("</script>");
+
+		return sb.toString();
 	}
 
 	@RequestMapping("/article/doAdd")
@@ -72,7 +89,7 @@ public class ArticleController {
 
 		return sb.toString();
 	}
-	
+
 	@RequestMapping("/article/doDelete")
 	@ResponseBody
 	public String doDelete(long id) {

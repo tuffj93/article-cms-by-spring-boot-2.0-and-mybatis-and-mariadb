@@ -7,11 +7,12 @@
 <meta charset="UTF-8">
 <title>커뮤니티 사이트 - 게시물 수정</title>
 <link rel="stylesheet" href="/resource/common.css">
+
 </head>
 <body>
 	<h1 class="con">게시물 수정</h1>
 
-<script>
+	<script>
 		function submitModifyForm(form) {
 			form.title.value = form.title.value.trim();
 			if (form.title.value.length == 0) {
@@ -31,19 +32,19 @@
 
 	<form class="con common-form" action="./doModify" method="POST"
 		onsubmit="submitModifyForm(this); return false;">
-		<input type="hidden" name="id" value='${article.title}'>
+		<input type="hidden" name="id" value="${article.id}">
 		<div>
 			<span> 제목 </span>
 			<div>
 				<input name="title" type="text" placeholder="제목"
-					autofocus="autofocus" value='${article.title}' }>
+					autofocus="autofocus" value="${article.title}">
 			</div>
 		</div>
 
 		<div>
 			<span> 내용 </span>
 			<div>
-				<textarea name="body" placeholder="내용"></textarea>
+				<textarea name="body" placeholder="내용">${article.body}</textarea>
 			</div>
 		</div>
 
@@ -55,10 +56,11 @@
 			</div>
 		</div>
 	</form>
+
 	<div class="btns con">
-		<a href="./list">게시물 리스트</a>
-		<a href="./add">게시물 추가</a>
-		<a onclick="if ( confirm('삭제하시겠습니까?') == false ) return false;" href="./doDelete?id=${article.id}">게시물 삭제</a>
+		<a href="./list">게시물 리스트</a> <a href="./add">게시물 추가</a> <a
+			onclick="if ( confirm('삭제하시겠습니까?') == false ) return false;"
+			href="./doDelete?id=${article.id}">게시물 삭제</a>
 	</div>
 </body>
 </html>
