@@ -53,4 +53,10 @@ public class ArticleServiceImpl implements ArticleService {
 		System.out.println("test3");
 		articleDao.modify(param);
 	}
+
+	@Override
+	public void hitUp(long id) {
+		articleDao.hitUp(id);
+		
+	}
 }

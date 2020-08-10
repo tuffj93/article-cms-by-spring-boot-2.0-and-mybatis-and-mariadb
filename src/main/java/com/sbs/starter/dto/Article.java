@@ -13,6 +13,7 @@ public class Article{
 	private String regDate;
 	private String title;
 	private String body;
+	private long hit;
 	public Article(int i, String string, String string2, String string3) {
 		// TODO Auto-generated constructor stub
 		id=i;
