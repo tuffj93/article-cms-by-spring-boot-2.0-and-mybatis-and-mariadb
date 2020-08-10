@@ -1,7 +1,5 @@
 package com.sbs.starter.controller;
 
-
-
 import java.util.List;
 import java.util.Map;
 
@@ -22,35 +20,65 @@ import lombok.extern.slf4j.Slf4j;
 public class ArticleController {
 	@Autowired
 	ArticleService articleService;
+	
+	@RequestMapping("/article/detail")
+	public String showDetail(Model model, long id) {
+		Article article = articleService.getOne(id);
+		
+		model.addAttribute("article", article);
+		
+		return "article/detail";
+	}
 
 	@RequestMapping("/article/list")
-	public String showList(Model aModel) {
+	public String showList(Model model) {
 		List<Article> list = articleService.getList();
 		int totalCount = articleService.getTotalCount();
-		
-		aModel.addAttribute("list", list);
-		aModel.addAttribute("totalCount", totalCount);
+
+		model.addAttribute("list", list);
+		model.addAttribute("totalCount", totalCount);
 
 		return "article/list";
 	}
-	
+
 	@RequestMapping("/article/add")
 	public String showAdd() {
 		return "article/add";
 	}
-	
+
 	@RequestMapping("/article/doAdd")
 	@ResponseBody
 	public String doAdd(@RequestParam Map<String, Object> param) {
 		long newId = articleService.add(param);
-		String msg = newId +"번 게시물이 추가되었습니다.";
-		
+
+		String msg = newId + "번 게시물이 추가되었습니다.";
+
 		StringBuilder sb = new StringBuilder();
-		
-		sb.append("<script>");
+
 		sb.append("alert('" + msg + "');");
+		sb.append("location.replace('./detail?id=" + newId + "');");
+
+		sb.insert(0, "<script>");
 		sb.append("</script>");
-		
+
+		return sb.toString();
+	}
+	
+	@RequestMapping("/article/doDelete")
+	@ResponseBody
+	public String doDelete(long id) {
+		articleService.delete(id);
+
+		String msg = id + "번 게시물이 삭제되었습니다.";
+
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("alert('" + msg + "');");
+		sb.append("location.replace('./list');");
+
+		sb.insert(0, "<script>");
+		sb.append("</script>");
+
 		return sb.toString();
 	}
 }
