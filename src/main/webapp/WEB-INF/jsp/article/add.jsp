@@ -10,7 +10,7 @@
 
 </head>
 <body>
-	<h1>게시물 작성</h1>
+	<h1 class='con'>게시물 작성</h1>
 
 	<script>
 		function submitAddForm(form) {
