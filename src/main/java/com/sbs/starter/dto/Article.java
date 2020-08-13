@@ -21,7 +21,7 @@ public class Article{
 		title=string2;
 		body=string3;
 		System.out.println(id);
-		System.out.println(title);
+		System.out.println(title+"title_test");
 		System.out.println(body);
 		System.out.println(regDate);
 

@@ -77,9 +77,9 @@ public class ArticleController {
 	@ResponseBody
 	public String doAdd(@RequestParam Map<String, Object> param) {
 		long newId = articleService.add(param);
-
+		System.out.println("test1");
 		String msg = newId + "번 게시물이 추가되었습니다.";
-
+		System.out.println("test2");
 		StringBuilder sb = new StringBuilder();
 
 		sb.append("alert('" + msg + "');");
