@@ -11,19 +11,15 @@ import lombok.NoArgsConstructor;
 public class Member{
 	private long id;
 	private String regDate;
-	private String title;
-	private String body;
-	private long hit;
+	private String loginId;
+	private String loginPw;
 	public Member(int i, String string, String string2, String string3) {
 		// TODO Auto-generated constructor stub
 		id=i;
 		regDate=string;
-		title=string2;
-		body=string3;
-		System.out.println(id);
-		System.out.println(title+"title_test");
-		System.out.println(body);
-		System.out.println(regDate);
+		loginId=string2;
+		loginPw=string3;
+
 
 	}
 
