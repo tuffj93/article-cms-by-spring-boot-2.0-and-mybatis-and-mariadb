@@ -2,7 +2,7 @@ package com.sbs.starter.util;
 
 import java.math.BigInteger;
 
-public class Cutil {
+public class CUtil {
 
 	public static long getAsLong(Object object) {
 		if ( object instanceof BigInteger) {
